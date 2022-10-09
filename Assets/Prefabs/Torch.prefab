@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightComponent: {fileID: 55219017798725060}
-  flickerRate: 7
+  flickerRate: 2
   intensityRange: {x: 0.1, y: 3}
   rangeRange: {x: 1.2, y: 2.7}
 --- !u!61 &3816566367214773156

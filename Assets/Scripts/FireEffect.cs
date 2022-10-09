@@ -17,14 +17,14 @@ public class FireEffect : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float targetIntensity = UnityEngine.Random.Range(intensityRange.x, intensityRange.y);
 
-        lightComponent.intensity = Mathf.Lerp(lightComponent.intensity, targetIntensity, flickerRate * Time.deltaTime);
+        lightComponent.intensity = Mathf.Lerp(lightComponent.intensity, targetIntensity, flickerRate * Time.fixedDeltaTime);
 
         float targetRange = UnityEngine.Random.Range(rangeRange.x, rangeRange.y);
 
-        lightComponent.pointLightOuterRadius = Mathf.Lerp(lightComponent.pointLightOuterRadius, targetRange, flickerRate * Time.deltaTime);
+        lightComponent.pointLightOuterRadius = Mathf.Lerp(lightComponent.pointLightOuterRadius, targetRange , flickerRate * Time.fixedDeltaTime);
     }
 }

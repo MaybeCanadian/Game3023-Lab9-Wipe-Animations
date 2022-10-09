@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 1.0f;
     public Rigidbody2D rb;
+    bool isWalking = false;
     // Start is called before the first frame update
     void Start()
     {
+        isWalking = false;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -21,5 +23,19 @@ public class PlayerController : MonoBehaviour
         UnityEngine.Vector3 input = new UnityEngine.Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
 
         rb.MovePosition(transform.position + input * speed * Time.fixedDeltaTime);
+
+        if(input.magnitude > 0)
+        {
+            isWalking = true;
+        }
+        else
+        {
+            isWalking = false;
+        }
+    }
+
+    public bool GetIsWalking()
+    {
+        return isWalking;
     }
 }

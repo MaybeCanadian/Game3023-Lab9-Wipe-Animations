@@ -53,6 +53,9 @@ TagManager:
   - name: Rocks and Trees
     uniqueID: 2481361933
     locked: 0
+  - name: Bushes
+    uniqueID: 1693235141
+    locked: 0
   - name: Player
     uniqueID: 2210794299
     locked: 0
