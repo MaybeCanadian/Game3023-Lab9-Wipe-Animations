@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3007101982572677726}
   - component: {fileID: 3007101982572677727}
   - component: {fileID: 3007101982572677723}
-  - component: {fileID: 3007101982572677721}
   - component: {fileID: 3007101982572677722}
-  - component: {fileID: -2768130251395102192}
+  - component: {fileID: 2823662230152916552}
+  - component: {fileID: 9033136569260283499}
   m_Layer: 0
   m_Name: Spooky
   m_TagString: Untagged
@@ -36,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3007101982572677725
 SpriteRenderer:
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2084172997
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 1488302932, guid: eb6ea088964994947b3d1794f8c82e72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,7 +107,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.208, y: 0.288}
+    oldSize: {x: 1.625, y: 2.25}
     newSize: {x: 0.26, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -151,7 +151,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   rb: {fileID: 0}
---- !u!114 &3007101982572677721
+--- !u!114 &3007101982572677722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3007101982572677712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180c625a50e1a9343a95d3c2e46dc502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightComponent: {fileID: 0}
+  flickerRate: 2
+  intensityRange: {x: 0.5, y: 2}
+  rangeRange: {x: 0.7, y: 1.3}
+--- !u!114 &2823662230152916552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,11 +183,11 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.990566, g: 0.7790712, b: 0.237362, a: 1}
+  m_Color: {r: 0.764151, g: 0.59678286, b: 0, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 000000006302d0f8df4e08b1a3f4be800d94e6933b0bc683
+  m_ApplyToSortingLayers: 000000006302d0f8df4e08b1a3f4be800d94e693c5b7ec643b0bc683
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -180,7 +196,7 @@ MonoBehaviour:
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 1
+  m_ShadowIntensityEnabled: 0
   m_ShadowIntensity: 0.75
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
@@ -219,7 +235,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
+  m_PointLightOuterRadius: 5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -230,23 +246,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &3007101982572677722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3007101982572677712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 180c625a50e1a9343a95d3c2e46dc502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightComponent: {fileID: 3007101982572677721}
-  flickerRate: 2
-  intensityRange: {x: 0.5, y: 2}
-  rangeRange: {x: 0.7, y: 1.3}
---- !u!114 &-2768130251395102192
+--- !u!114 &9033136569260283499
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,18 +264,21 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 000000006302d0f8df4e08b1a3f4be800d94e6933b0bc683
+  m_ApplyToSortingLayers: 000000006302d0f8df4e08b1a3f4be800d94e693c5b7ec643b0bc683
   m_ShapePath:
-  - {x: -0.044450343, y: 0.001145184, z: 0}
-  - {x: -0.08336952, y: 0.0368106, z: 0}
-  - {x: -0.0776436, y: 0.10552175, z: 0}
-  - {x: -0.058175445, y: 0.15590993, z: 0}
-  - {x: -0.05246663, y: 0.23417625, z: 0}
-  - {x: 0.03414367, y: 0.24104738, z: 0}
-  - {x: 0.05405277, y: 0.15132919, z: 0}
-  - {x: 0.06849925, y: 0.10421191, z: 0}
-  - {x: 0.07123056, y: 0.032229856, z: 0}
-  - {x: 0.042600915, y: -0.0044160783, z: 0}
-  m_ShapePathHash: 1138741703
+  - {x: -0.49430555, y: 0.13759762, z: 0}
+  - {x: -0.62933135, y: 0.2982009, z: 0}
+  - {x: -0.65513086, y: 0.59059584, z: 0}
+  - {x: -0.5175333, y: 0.87439096, z: 0}
+  - {x: -0.45733437, y: 1.2613842, z: 0}
+  - {x: -0.4255068, y: 1.6996095, z: 0}
+  - {x: -0.23373824, y: 1.8891734, z: 0}
+  - {x: 0.27365285, y: 1.8633739, z: 0}
+  - {x: 0.38545084, y: 1.4333813, z: 0}
+  - {x: 0.5402483, y: 0.814192, z: 0}
+  - {x: 0.60610354, y: 0.3322332, z: 0}
+  - {x: 0.3997072, y: 0.042999268, z: 0}
+  - {x: -0.28533736, y: -0.0027939081, z: 0}
+  m_ShapePathHash: -1992218976
   m_Mesh: {fileID: 0}
-  m_InstanceId: 41638
+  m_InstanceId: -91100
