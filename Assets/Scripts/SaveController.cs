@@ -44,7 +44,7 @@ public class SaveController : MonoBehaviour
 
             StreamReader sr = new StreamReader(defaultSavesPath);
 
-            if(sr == null)
+            if (sr == null)
             {
                 Debug.LogError("can't open file");
                 return;
@@ -66,13 +66,8 @@ public class SaveController : MonoBehaviour
         }
         catch
         {
-            
+
         }
-    }
-
-    private void FinishLoadingScene()
-    {
-
     }
 
     public void SaveGame()
