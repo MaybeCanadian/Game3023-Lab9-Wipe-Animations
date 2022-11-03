@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -141,7 +141,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Player attack 1
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 249
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94a98795e4fc50449944f02c01167432
+      internalID: -611966466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player attack 2
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 249
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b15e34d09726d1f4cb56db36140a0159
+      internalID: -1530699285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player attack 3
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 250
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b661948abc589940bf6a2578488c730
+      internalID: 1261428610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -152,7 +215,79 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      animation1_66: 803361991
+      animation1_47: 411509495
+      animation1_7: 1397801448
+      animation1_43: 1008976163
+      animation1_27: -65286328
+      animation1_1: -922379511
+      animation1_57: -2062228996
+      animation1_19: 75270635
+      animation1_69: -627775108
+      animation1_17: -150911175
+      animation1_28: 2128260728
+      player attack 2: -1530699285
+      animation1_23: -774593895
+      animation1_34: -781803703
+      animation1_5: -263175150
+      animation1_42: 1296491489
+      animation1_53: -1063768039
+      animation1_9: 746744498
+      animation1_33: 25994669
+      animation1_48: 1201290218
+      animation1_64: 733347411
+      animation1_68: -32401887
+      animation1_63: -1412376886
+      animation1_40: 349918440
+      animation1_3: 1860656854
+      animation1_41: -64211940
+      animation1_54: -1978491137
+      animation1_45: 939665098
+      animation1_16: -829234533
+      Player attack 1: -611966466
+      animation1_32: -1297043305
+      animation1_49: 644948416
+      animation1_44: 1047466474
+      animation1_26: 792099947
+      animation1_39: -978949767
+      animation1_52: 1202071135
+      animation1_59: -1874179896
+      player attack 3: 1261428610
+      animation1_29: -185904877
+      animation1_11: -1477972871
+      animation1_25: 320342399
+      animation1_35: 1989723632
+      animation1_21: -833163590
+      animation1_30: 577363668
+      animation1_55: 2098283874
+      animation1_22: 732903221
+      animation1_56: 22072413
+      animation1_70: -1523832669
+      animation1_58: 200152279
+      animation1_15: -449112930
+      animation1_24: 389381614
+      animation1_4: -2028250328
+      animation1_50: -558582318
+      animation1_71: 176577024
+      animation1_51: -1852534457
+      animation1_61: 1346754602
+      animation1_65: -729369274
+      animation1_18: 908004116
+      animation1_8: -1752311544
+      animation1_20: 34939942
+      animation1_37: 1517994196
+      animation1_31: 1257460276
+      animation1_2: -1944372247
+      animation1_62: 1439858716
+      animation1_38: -1130184454
+      animation1_0: -1283968122
+      animation1_10: 2060564726
+      animation1_60: 2015571980
+      animation1_46: 1608357700
+      animation1_67: 838000739
+      animation1_36: 468779718
+      animation1_6: 2069583133
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
