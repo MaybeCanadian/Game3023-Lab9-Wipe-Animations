@@ -7,13 +7,18 @@ public class PlayerCombatent : Combatent
     [Header("Player Input UI")]
     public GameObject actionButtonsParent;
     public GameObject playerAbilityPanel;
+    public GameObject abilityChosenPanel;
     public List<AbilitySlotScript> abilitySlots;
+
+    private PlayerCombatStates oldState;
 
     private new void Start()
     {
-        actionButtonsParent.SetActive(true);
-        playerAbilityPanel.SetActive(false);
+        oldState = PlayerCombatStates.NULL;
+        ChangePlayerCombatState(PlayerCombatStates.ChooseAction);
+
         SetUpSlots();
+
         base.Start();
     }
 
@@ -31,21 +36,79 @@ public class PlayerCombatent : Combatent
         }
     }
 
+    public void ChangePlayerCombatState(PlayerCombatStates newState)
+    {
+
+        if(oldState == newState)
+        {
+            return;
+        }
+
+        switch(oldState)
+        {
+            case PlayerCombatStates.NULL:
+                actionButtonsParent?.SetActive(false);
+                playerAbilityPanel?.SetActive(false);
+                abilityChosenPanel?.SetActive(false);
+                break;
+            case PlayerCombatStates.ChooseAction:
+                actionButtonsParent?.SetActive(false);
+                break;
+            case PlayerCombatStates.ChooseAbility:
+                playerAbilityPanel?.SetActive(false);
+                break;
+            case PlayerCombatStates.WaitForOpponent:
+                abilityChosenPanel?.SetActive(false);
+                break;
+            case PlayerCombatStates.Fleeing:
+                //nothing
+                break;
+        }
+
+        if(newState != PlayerCombatStates.NULL)
+            switch(newState)
+        {
+            case PlayerCombatStates.ChooseAction:
+                actionButtonsParent?.SetActive(true);
+                break;
+            case PlayerCombatStates.ChooseAbility:
+                playerAbilityPanel?.SetActive(true);
+                break;
+            case PlayerCombatStates.WaitForOpponent:
+                abilityChosenPanel?.SetActive(true);
+                break;
+            case PlayerCombatStates.Fleeing:
+                BattleManager.instance.Flee(); //for now just flees
+                break;
+        }
+
+        oldState = newState;
+
+        return;
+    }
+
     public void OnAbilityActionPressed()
     {
-        actionButtonsParent.SetActive(false);
-        playerAbilityPanel.SetActive(true);
+        ChangePlayerCombatState(PlayerCombatStates.ChooseAbility);
     }
 
     public void OnAbilityBackButtonPressed()
     {
-        playerAbilityPanel.SetActive(false);
-        actionButtonsParent.SetActive(true);
+        ChangePlayerCombatState(PlayerCombatStates.ChooseAction);
     }
 
     public void OnFleeActionPressed()
     {
-        BattleManager.instance.Flee();
+        ChangePlayerCombatState(PlayerCombatStates.Fleeing);
     }
 
+}
+
+public enum PlayerCombatStates
+{
+    NULL,
+    ChooseAction,
+    ChooseAbility,
+    WaitForOpponent,
+    Fleeing
 }
