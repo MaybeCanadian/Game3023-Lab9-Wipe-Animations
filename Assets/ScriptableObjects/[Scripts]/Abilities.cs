@@ -23,8 +23,10 @@ public class Abilities : ScriptableObject
     public TargetingTypes targets;
 
     [Header("Secondary Effects")]
+    [Tooltip("If false it will skip checking the next part")]
+    public bool hasOtherEffects;
     [Tooltip("Any none damaging effects of the ability")]
-    public FullEffectCluster effects;
+    public List<FullEffectCluster> effects;
 }
 
 [System.Serializable]

@@ -6,15 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
-    public GameObject abilitiesPanel;
-    public bool abilityOpen;
+    public static BattleManager instance;
 
     private MainSceneManager manager;
 
+    private void Awake()
+    {
+        if (instance != this && instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
     private void Start()
     {
-        abilityOpen = false;
-
         manager = MainSceneManager.instance;
 
         if (manager)
@@ -23,7 +32,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void OnFleePressed()
+    public void Flee()
     {
         if (manager)
         {
@@ -33,20 +42,6 @@ public class BattleManager : MonoBehaviour
         else
         {
             Application.Quit();
-        }
-    }
-
-    public void OnAbilityPressed()
-    {
-        if(abilityOpen)
-        {
-            abilityOpen=false;
-            abilitiesPanel.SetActive(false);
-        }
-        else
-        {
-            abilitiesPanel.SetActive(true);
-            abilityOpen=true;
         }
     }
 }

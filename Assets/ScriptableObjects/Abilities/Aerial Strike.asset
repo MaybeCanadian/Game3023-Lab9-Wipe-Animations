@@ -10,20 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b252dbb0437847848bdc07c8602781c4, type: 3}
-  m_Name: Dodge
+  m_Name: Aerial Strike
   m_EditorClassIdentifier: 
-  abilityName: Dodge
-  maxUses: 30
-  doesDamage: 0
-  damage: 0
-  canMiss: 0
-  accuracy: 0
-  targets: 2
-  hasOtherEffects: 1
-  effects:
-  - statusEffects: []
-    statChangeEffects:
-    - stat: 5
-      method: 2
-      changeAmount: 20
-    effectChance: 100
+  abilityName: Aerial Strike
+  maxUses: 25
+  doesDamage: 1
+  damage: 30
+  canMiss: 1
+  accuracy: 90
+  targets: 0
+  hasOtherEffects: 0
+  effects: []
