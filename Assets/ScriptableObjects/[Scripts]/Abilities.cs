@@ -27,6 +27,9 @@ public class Abilities : ScriptableObject
     public bool hasOtherEffects;
     [Tooltip("Any none damaging effects of the ability")]
     public List<FullEffectCluster> effects;
+
+    [Header("Visual Effects")]
+    public AnimationsEnum animation;
 }
 
 [System.Serializable]

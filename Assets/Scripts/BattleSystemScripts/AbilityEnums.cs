@@ -36,6 +36,7 @@ public enum Stats
     Dodge //decreases opponent chance to hit you
 } //All stat types
 
+[System.Serializable]
 public enum StatChangeMethod
 {
     Add,
@@ -44,3 +45,12 @@ public enum StatChangeMethod
     Divide,
     Reset
 } //How the stat is changed
+
+[System.Serializable]
+public enum AnimationsEnum
+{
+    SPIN,
+    DODGE,
+    JUMP,
+    ATTACK
+}

@@ -7,8 +7,27 @@ using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager instance;
-
     private MainSceneManager manager;
+
+    [Header("Battle system variables")]
+    [Tooltip("How long between ticks in seconds")]
+    public float tickRate = 0.2f;
+
+    //Events-----------------------------------------------------------------
+    public delegate void TurnStart(Combatent currentTurn);
+    public static TurnStart OnTurnStart; //called when the turn starts for a combatent
+    public delegate void TurnEnd(Combatent currentTurn);
+    public static TurnEnd OnTurnEnd; //called when turn ends for a combatent
+    public delegate void AllFightersAdded();
+    public static AllFightersAdded OnAllFightersAdded; //called after all fighters have been added at the start
+    public delegate void RoundEnd();
+    public static RoundEnd OnRoundEnd;
+    //-----------------------------------------------------------------------
+
+    [Header("Fighters in Battle")]
+    public List<Fighter> fighters;
+
+    public Queue<Fighter> turnOrder;
 
     private void Awake()
     {
@@ -21,7 +40,6 @@ public class BattleManager : MonoBehaviour
             instance = this;
         }
     }
-
     private void Start()
     {
         manager = MainSceneManager.instance;
@@ -30,8 +48,70 @@ public class BattleManager : MonoBehaviour
         {
             manager.PauseScene();
         }
+
+        StartCoroutine("MainBattleLoop");
     }
 
+    public void AddFighter(Combatent fighter)
+    {
+        Fighter tempFighter = new Fighter(fighter);
+        tempFighter.Activate();
+        fighters.Add(tempFighter);
+    }
+    public bool RemoveFighter(Combatent fighter)
+    {
+        foreach(Fighter fig in fighters)
+        {
+            if(fig.fighter == fighter)
+            {
+                fighters.Remove(fig);
+                return true;
+            }
+        }
+
+        return false;
+    }
+    public IEnumerator MainBattleLoop()
+    {
+        yield return new WaitForEndOfFrame();
+
+        OnAllFightersAdded?.Invoke();
+
+        while(true)
+        {
+            bool WaitingForInputs = false;
+
+            while (WaitingForInputs == false)
+            {
+                WaitingForInputs =  CheckCombatentsReady(out int NumReady);
+                Debug.Log(NumReady);
+                yield return null;
+            }
+            
+            DetermineTurnOrder();
+
+            DisplayMoves();
+
+            OnRoundEnd?.Invoke();
+
+            yield return null;
+        }
+
+        //yield break;
+    }
+    public bool CheckCombatentsReady(out int NumReady)
+    {
+        NumReady = 0;
+        foreach(Fighter fig in fighters)
+        {
+            if(fig.chosen)
+            {
+                NumReady++;
+            }
+        }
+
+        return (NumReady == fighters.Count) ? true : false;
+    }
     public void Flee()
     {
         if (manager)
@@ -43,5 +123,99 @@ public class BattleManager : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+    public void DetermineTurnOrder()
+    {
+        foreach(Fighter fig in fighters)
+        {
+            fig.inTurnOrder = false;
+        }
+
+
+        Fighter tempStorage = null;
+        bool notDone = true;
+        while (notDone)
+        {
+            tempStorage = null;
+            foreach (Fighter fig in fighters)
+            {
+                if (fig.inTurnOrder)
+                    continue;
+
+                if(tempStorage == null)
+                {
+                    tempStorage = fig;
+                    continue;
+                }
+
+                if (fig.fighter.speed > tempStorage.fighter.speed)
+                {
+                    tempStorage = fig;
+                    continue;
+                }
+            }
+
+            if(tempStorage != null)
+            {
+                tempStorage.inTurnOrder = true;
+                turnOrder.Enqueue(tempStorage);
+            }
+            else
+            {
+                notDone = false;
+            }
+        }
+    }
+    private void DisplayMoves()
+    {
+        Debug.Log("the moves are");
+        while (turnOrder.Count > 0)
+        {
+            Fighter front = turnOrder.Dequeue();
+            OnTurnStart?.Invoke(front.fighter);
+            Debug.Log(front.fighter.combatentName + " used " + front.fighter.chosenAbility.abilityName);
+            OnTurnEnd?.Invoke(front.fighter);
+        }
+    }
+}
+
+
+
+[System.Serializable]
+public class Fighter
+{
+    [Tooltip("The combatent in the fight")]
+    public Combatent fighter;
+    [Tooltip("If the combatent has chosen an input")]
+    public bool chosen;
+    public bool inTurnOrder;
+
+    //constructor, makes the fighter with a combatent, we need one to make this class
+    public Fighter(Combatent input)
+    {
+        fighter = input;
+        chosen = false;
+        inTurnOrder = false;
+    }
+
+    //connects the Fighter class to the combatent events-------
+    public void Activate()
+    {
+        fighter.OnAbilityChosen += OnAbilityChosen;
+    }
+    public void DeActivate()
+    {
+        fighter.OnAbilityChosen -= OnAbilityChosen;
+    }
+    //---------------------------------------------------------
+
+    //recieves the ability chosen event from the combatent
+    public void OnAbilityChosen(bool input)
+    {
+        chosen = input;
+    }
+    public void ResetChosen()
+    {
+        chosen = false;
     }
 }

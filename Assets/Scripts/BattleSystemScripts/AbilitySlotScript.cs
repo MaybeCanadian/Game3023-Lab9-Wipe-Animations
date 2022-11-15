@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class AbilitySlotScript : MonoBehaviour
 {
+    //UI references
     public TMP_Text slotName;
     public TMP_Text slotUses;
     public TMP_Text slotDamage;
     public TMP_Text slotAccuracy;
 
+    //slot known information
     public AbilityCombined slotAbility;
-
     public PlayerCombatent playerCombatent;
     public void SetUpSlot(AbilityCombined inputAbility)
     {
@@ -20,6 +21,7 @@ public class AbilitySlotScript : MonoBehaviour
         UpdateSlot();
     }
 
+    //slot update functions------------------------
     public void UpdateSlot()
     {
         slotName.text = slotAbility.ability.abilityName;
@@ -28,7 +30,6 @@ public class AbilitySlotScript : MonoBehaviour
         UpdateDamage();
         UpdateUses();  
     }
-
     private void UpdateDamage()
     {
         if (slotAbility.ability.doesDamage == true)
@@ -40,7 +41,6 @@ public class AbilitySlotScript : MonoBehaviour
             slotDamage.text = "--";
         }
     }
-
     private void UpdateAccuracy()
     {
         if (slotAbility.ability.canMiss)
@@ -52,11 +52,11 @@ public class AbilitySlotScript : MonoBehaviour
             slotAccuracy.text = "--";
         }
     }
-
     private void UpdateUses()
     {
         slotUses.text = (slotAbility.ability.maxUses - slotAbility.usesUsed).ToString() + " / " + slotAbility.ability.maxUses;
     }
+    //---------------------------------------------
 
     public void OnSlotPressed()
     {
