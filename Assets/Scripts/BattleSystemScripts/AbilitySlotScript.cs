@@ -11,6 +11,8 @@ public class AbilitySlotScript : MonoBehaviour
     public TMP_Text slotAccuracy;
 
     public AbilityCombined slotAbility;
+
+    public PlayerCombatent playerCombatent;
     public void SetUpSlot(AbilityCombined inputAbility)
     {
         slotAbility = inputAbility;
@@ -60,6 +62,7 @@ public class AbilitySlotScript : MonoBehaviour
     {
         if (slotAbility.usesUsed < slotAbility.ability.maxUses)
         {
+            playerCombatent.OnAbilityChosen(slotAbility.ability);
             slotAbility.usesUsed++;
             UpdateUses();
         }

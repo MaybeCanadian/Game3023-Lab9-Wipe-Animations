@@ -36,6 +36,14 @@ public class PlayerCombatent : Combatent
         }
     }
 
+    private void UpdateAllSlots()
+    {
+        foreach(AbilitySlotScript slot in abilitySlots)
+        {
+            slot.UpdateSlot();
+        }
+    }
+
     public void ChangePlayerCombatState(PlayerCombatStates newState)
     {
 
@@ -78,13 +86,19 @@ public class PlayerCombatent : Combatent
                 abilityChosenPanel?.SetActive(true);
                 break;
             case PlayerCombatStates.Fleeing:
-                BattleManager.instance.Flee(); //for now just flees
+                //nothing for now
                 break;
         }
 
         oldState = newState;
 
         return;
+    }
+
+    public void OnAbilityChosen(Abilities ability)
+    {
+        chosenAbility = ability;
+        ChangePlayerCombatState(PlayerCombatStates.WaitForOpponent);
     }
 
     public void OnAbilityActionPressed()
@@ -97,8 +111,26 @@ public class PlayerCombatent : Combatent
         ChangePlayerCombatState(PlayerCombatStates.ChooseAction);
     }
 
+    public void OnWaitingCancelButtonPressed()
+    {
+        foreach(AbilityCombined abilities in activeAbilities)
+        {
+            if(chosenAbility == abilities.ability)
+            {
+                
+                abilities.usesUsed--;
+                break;
+            }
+        }
+
+        UpdateAllSlots();
+        chosenAbility = null;
+        ChangePlayerCombatState(PlayerCombatStates.ChooseAbility);
+    }
+
     public void OnFleeActionPressed()
     {
+        BattleManager.instance.Flee(); //for now just flees
         ChangePlayerCombatState(PlayerCombatStates.Fleeing);
     }
 
