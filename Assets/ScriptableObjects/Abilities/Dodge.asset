@@ -27,3 +27,4 @@ MonoBehaviour:
       method: 2
       changeAmount: 20
     effectChance: 100
+  animation: 1

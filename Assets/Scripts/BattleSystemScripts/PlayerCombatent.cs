@@ -31,6 +31,7 @@ public class PlayerCombatent : Combatent
         if(input == this)
         {
             //event when the player turn starts
+            combatentAnims.SetTrigger(chosenAbility.animation.ToString());
         }
     }
     public override void OnTurnEnd(Combatent input)

@@ -13,13 +13,23 @@ public class AICombatent : Combatent
 
     }
     public override void OnAllFightersAdded()
+    {
+        ChooseAbilityRandom();
+    }
+    public override void OnRoundEnd() 
+    {
+        //when the round ends the AI chooses a new move to use
+        //Debug.Log("test");
+        ChooseAbilityRandom();
+    }
+
+    private void ChooseAbilityRandom()
     { 
-        //some basic code to chose a random ability, only has one called debug ability
+        //just randomly chooses one of the abilities
         if (activeAbilities.Count > 0)
         {
             chosenAbility = activeAbilities[Random.Range(0, activeAbilities.Count - 1)].ability;
             ChooseAbility(chosenAbility);
         }
     }
-    public override void OnRoundEnd() { }
 }

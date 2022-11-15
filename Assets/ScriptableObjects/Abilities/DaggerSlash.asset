@@ -21,3 +21,4 @@ MonoBehaviour:
   targets: 0
   hasOtherEffects: 0
   effects: []
+  animation: 3

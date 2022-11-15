@@ -92,9 +92,10 @@ public class BattleManager : MonoBehaviour
 
             DisplayMoves();
 
-            OnRoundEnd?.Invoke();
-
             ResetFightersAfterRound();
+
+            //we invoke last, after we reset everything
+            OnRoundEnd?.Invoke();
 
             yield return null;
         }
@@ -185,7 +186,6 @@ public class BattleManager : MonoBehaviour
             turnOrder.RemoveAt(0);
         }
     }
-
     private void ResetFightersAfterRound()
     {
         foreach(Fighter fig in fighters)
