@@ -27,7 +27,7 @@ public class BattleManager : MonoBehaviour
     [Header("Fighters in Battle")]
     public List<Fighter> fighters;
 
-    public Queue<Fighter> turnOrder;
+    public List<Fighter> turnOrder;
 
     private void Awake()
     {
@@ -84,7 +84,7 @@ public class BattleManager : MonoBehaviour
             while (WaitingForInputs == false)
             {
                 WaitingForInputs =  CheckCombatentsReady(out int NumReady);
-                Debug.Log(NumReady);
+                //Debug.Log(NumReady);
                 yield return null;
             }
             
@@ -93,6 +93,8 @@ public class BattleManager : MonoBehaviour
             DisplayMoves();
 
             OnRoundEnd?.Invoke();
+
+            ResetFightersAfterRound();
 
             yield return null;
         }
@@ -131,7 +133,6 @@ public class BattleManager : MonoBehaviour
             fig.inTurnOrder = false;
         }
 
-
         Fighter tempStorage = null;
         bool notDone = true;
         while (notDone)
@@ -148,8 +149,14 @@ public class BattleManager : MonoBehaviour
                     continue;
                 }
 
-                if (fig.fighter.speed > tempStorage.fighter.speed)
+                if (fig.fighter.speed >= tempStorage.fighter.speed)
                 {
+                    if(fig.fighter.speed == tempStorage.fighter.speed)
+                    {
+                        tempStorage = (Random.Range(0, 2) == 0) ? fig: tempStorage;
+                        continue;
+                    }
+
                     tempStorage = fig;
                     continue;
                 }
@@ -158,7 +165,7 @@ public class BattleManager : MonoBehaviour
             if(tempStorage != null)
             {
                 tempStorage.inTurnOrder = true;
-                turnOrder.Enqueue(tempStorage);
+                turnOrder.Add(tempStorage);
             }
             else
             {
@@ -171,10 +178,20 @@ public class BattleManager : MonoBehaviour
         Debug.Log("the moves are");
         while (turnOrder.Count > 0)
         {
-            Fighter front = turnOrder.Dequeue();
+            Fighter front = turnOrder[0];
             OnTurnStart?.Invoke(front.fighter);
             Debug.Log(front.fighter.combatentName + " used " + front.fighter.chosenAbility.abilityName);
             OnTurnEnd?.Invoke(front.fighter);
+            turnOrder.RemoveAt(0);
+        }
+    }
+
+    private void ResetFightersAfterRound()
+    {
+        foreach(Fighter fig in fighters)
+        {
+            fig.inTurnOrder = false;
+            fig.chosen = false;
         }
     }
 }

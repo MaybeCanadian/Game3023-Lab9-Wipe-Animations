@@ -10,12 +10,12 @@ public class Combatent : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public float speed;
+    public string combatentName;
 
     [Header("Combatent visuals")]
     public Animator combatentAnims;
     public Slider healthBar;
     public TMP_Text healthText;
-    public string combatentName;
 
     [Header("Combatent Abilities")]
     public List<AbilityCombined> activeAbilities;
@@ -30,12 +30,14 @@ public class Combatent : MonoBehaviour
         BattleManager.OnTurnStart += OnTurnStart;
         BattleManager.OnTurnEnd += OnTurnEnd;
         BattleManager.OnAllFightersAdded += OnAllFightersAdded;
+        BattleManager.OnRoundEnd += OnRoundEnd;
     }
     protected void OnDisable()
     {
         BattleManager.OnTurnStart -= OnTurnStart;
         BattleManager.OnTurnEnd -= OnTurnEnd;
         BattleManager.OnAllFightersAdded -= OnAllFightersAdded;
+        BattleManager.OnRoundEnd -= OnRoundEnd;
     }
      
     protected void Start()
@@ -48,8 +50,8 @@ public class Combatent : MonoBehaviour
     }
     public void UpdateHealthBar()
     {
-        HealthBar.value = currentHealth / maxHealth;
-        HealthText.text = currentHealth.ToString() + "/" + maxHealth.ToString();
+        healthBar.value = currentHealth / maxHealth;
+        healthText.text = currentHealth.ToString() + "/" + maxHealth.ToString();
     }
     public void ChooseAbility(Abilities chosen)
     {

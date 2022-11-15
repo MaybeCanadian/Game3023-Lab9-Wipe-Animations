@@ -13,9 +13,13 @@ public class AICombatent : Combatent
 
     }
     public override void OnAllFightersAdded()
-    {
-        if(activeAbilities.Count > 0)
+    { 
+        //some basic code to chose a random ability, only has one called debug ability
+        if (activeAbilities.Count > 0)
+        {
             chosenAbility = activeAbilities[Random.Range(0, activeAbilities.Count - 1)].ability;
+            ChooseAbility(chosenAbility);
+        }
     }
     public override void OnRoundEnd() { }
 }
