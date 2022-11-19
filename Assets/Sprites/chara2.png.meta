@@ -164,7 +164,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chara2_1
+      name: Red Guy
       rect:
         serializedVersion: 2
         x: 26
@@ -227,7 +227,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chara2_4
+      name: Blue Guy
       rect:
         serializedVersion: 2
         x: 104
@@ -353,7 +353,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chara2_10
+      name: Green Guy
       rect:
         serializedVersion: 2
         x: 260
@@ -1172,7 +1172,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chara2_49
+      name: Hat Guy
       rect:
         serializedVersion: 2
         x: 26
@@ -1298,7 +1298,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chara2_55
+      name: Yellow Guy
       rect:
         serializedVersion: 2
         x: 182
@@ -2173,7 +2173,6 @@ TextureImporter:
       chara2_63: 830675520
       chara2_81: 1186580727
       chara2_90: -371937914
-      chara2_49: -1062121902
       chara2_57: 259274521
       Player 3: 1531370386
       chara2_9: 315833998
@@ -2182,16 +2181,16 @@ TextureImporter:
       Player 4: 1564360445
       Player 11: 478757885
       chara2_26: 974190276
+      Yellow Guy: 225123846
       chara2_13: 1745504394
       chara2_56: -926567211
-      chara2_55: 225123846
       chara2_36: 1477418203
       Player 6: -645159439
+      Blue Guy: 1121921231
       Player 8: -2134671707
       chara2_78: -1865264838
       Player 10: 701989428
       chara2_85: 1690726174
-      chara2_1: 837338993
       Player 12: 1979596190
       chara2_21: 1596218034
       chara2_0: -1767597172
@@ -2201,6 +2200,7 @@ TextureImporter:
       chara2_15: -596357980
       chara2_38: -1229689987
       chara2_51: -1516422054
+      Red Guy: 837338993
       chara2_84: -556789342
       chara2_65: 102793597
       chara2_79: -184975651
@@ -2238,15 +2238,15 @@ TextureImporter:
       chara2_58: -594859267
       chara2_41: 1069242596
       chara2_82: 1819093498
-      chara2_10: -1665854060
       chara2_88: -738508937
+      Green Guy: -1665854060
       chara2_22: -479503314
       chara2_77: -1405324101
-      chara2_4: 1121921231
       chara2_14: 720679057
       chara2_83: -1983336547
       chara2_59: -1993613735
       chara2_17: 504069631
+      Hat Guy: -1062121902
       chara2_68: 341176506
       chara2_48: 1210424470
       chara2_69: 180569537

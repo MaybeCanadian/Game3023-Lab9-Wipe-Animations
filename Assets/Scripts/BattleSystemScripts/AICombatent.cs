@@ -1,9 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AICombatent : Combatent
 {
+    public Enemies enemyBlock;
+    public Image enemyImage;
+
+    private void Awake()
+    {
+        enemyBlock = EncounterManager.instance.GetEnemyEncounter();
+
+        if (enemyBlock)
+        {
+            List<Abilities> abilities = enemyBlock.GetAbilities();
+            activeAbilities.Clear();
+
+            foreach (Abilities ability in abilities)
+            {
+                AbilityCombined tempAbil = new AbilityCombined();
+                tempAbil.ability = ability;
+                tempAbil.usesUsed = 0;
+                activeAbilities.Add(tempAbil);
+            }
+
+            stats = enemyBlock.stats;
+
+            enemyImage.sprite = enemyBlock.image;
+            combatentName = enemyBlock.name;
+        }
+    }
+
+    
     public override void OnTurnStart(Combatent input)
     {
 
@@ -22,7 +52,6 @@ public class AICombatent : Combatent
         //Debug.Log("test");
         ChooseAbilityRandom();
     }
-
     private void ChooseAbilityRandom()
     { 
         //just randomly chooses one of the abilities

@@ -7,10 +7,9 @@ using UnityEngine.UI;
 public class Combatent : MonoBehaviour
 {
     [Header("Combatent Values")]
-    public float maxHealth;
-    public float currentHealth;
-    public float speed;
     public string combatentName;
+    public StatBlock stats;
+    public float currentHealth;
 
     [Header("Combatent visuals")]
     public Animator combatentAnims;
@@ -43,15 +42,15 @@ public class Combatent : MonoBehaviour
     protected void Start()
     {
         chosenAbility = null;
-        currentHealth = maxHealth;
+        currentHealth = stats.maxHealth;
         UpdateHealthBar();
 
         BattleManager.instance.AddFighter(this);
     }
     public void UpdateHealthBar()
     {
-        healthBar.value = currentHealth / maxHealth;
-        healthText.text = currentHealth.ToString() + "/" + maxHealth.ToString();
+        healthBar.value = currentHealth / stats.maxHealth;
+        healthText.text = currentHealth.ToString() + "/" + stats.maxHealth.ToString();
     }
     public void ChooseAbility(Abilities chosen)
     {
@@ -76,5 +75,5 @@ public class Combatent : MonoBehaviour
 public class AbilityCombined
 {
     public Abilities ability;
-    public int usesUsed;
+    public int usesUsed = 0;
 }

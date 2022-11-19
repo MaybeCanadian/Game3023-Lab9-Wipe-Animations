@@ -1294,10 +1294,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0244a1234ddf2104fbe56d9185bc9e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  speed: 10
   combatentName: Player
+  stats: {fileID: 11400000, guid: 387c69491652b8e48bfb81633b7877f6, type: 2}
+  currentHealth: 0
   combatentAnims: {fileID: 743437429}
   healthBar: {fileID: 652714082}
   healthText: {fileID: 1348573131}
@@ -1866,17 +1865,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cd3260c8ad2aa479ddd336db647688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  speed: 15
   combatentName: Enemy
+  stats: {fileID: 0}
+  currentHealth: 0
   combatentAnims: {fileID: 857251889}
   healthBar: {fileID: 1347258962}
   healthText: {fileID: 1818906975}
-  activeAbilities:
-  - ability: {fileID: 11400000, guid: eebc16d32f772644fb1b0b77fe3f8e0b, type: 2}
-    usesUsed: 0
+  activeAbilities: []
   chosenAbility: {fileID: 0}
+  enemyBlock: {fileID: 11400000, guid: 59a2034400d415f4582a5d83d8edb8df, type: 2}
+  enemyImage: {fileID: 857251887}
 --- !u!114 &1288417285 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4150473843010653635, guid: a1e92b0f095a171409a6b338005dac14, type: 3}

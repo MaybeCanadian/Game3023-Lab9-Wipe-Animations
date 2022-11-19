@@ -60,9 +60,9 @@ public class BattleManager : MonoBehaviour
     }
     public bool RemoveFighter(Combatent fighter)
     {
-        foreach(Fighter fig in fighters)
+        foreach (Fighter fig in fighters)
         {
-            if(fig.fighter == fighter)
+            if (fig.fighter == fighter)
             {
                 fighters.Remove(fig);
                 return true;
@@ -77,17 +77,17 @@ public class BattleManager : MonoBehaviour
 
         OnAllFightersAdded?.Invoke();
 
-        while(true)
+        while (true)
         {
             bool WaitingForInputs = false;
 
             while (WaitingForInputs == false)
             {
-                WaitingForInputs =  CheckCombatentsReady(out int NumReady);
+                WaitingForInputs = CheckCombatentsReady(out int NumReady);
                 //Debug.Log(NumReady);
                 yield return null;
             }
-            
+
             DetermineTurnOrder();
 
             DisplayMoves();
@@ -105,9 +105,9 @@ public class BattleManager : MonoBehaviour
     public bool CheckCombatentsReady(out int NumReady)
     {
         NumReady = 0;
-        foreach(Fighter fig in fighters)
+        foreach (Fighter fig in fighters)
         {
-            if(fig.chosen)
+            if (fig.chosen)
             {
                 NumReady++;
             }
@@ -129,7 +129,7 @@ public class BattleManager : MonoBehaviour
     }
     public void DetermineTurnOrder()
     {
-        foreach(Fighter fig in fighters)
+        foreach (Fighter fig in fighters)
         {
             fig.inTurnOrder = false;
         }
@@ -144,17 +144,17 @@ public class BattleManager : MonoBehaviour
                 if (fig.inTurnOrder)
                     continue;
 
-                if(tempStorage == null)
+                if (tempStorage == null)
                 {
                     tempStorage = fig;
                     continue;
                 }
 
-                if (fig.fighter.speed >= tempStorage.fighter.speed)
+                if (fig.fighter.stats.speed >= tempStorage.fighter.stats.speed)
                 {
-                    if(fig.fighter.speed == tempStorage.fighter.speed)
+                    if (fig.fighter.stats.speed == tempStorage.fighter.stats.speed)
                     {
-                        tempStorage = (Random.Range(0, 2) == 0) ? fig: tempStorage;
+                        tempStorage = (Random.Range(0, 2) == 0) ? fig : tempStorage;
                         continue;
                     }
 
@@ -163,7 +163,7 @@ public class BattleManager : MonoBehaviour
                 }
             }
 
-            if(tempStorage != null)
+            if (tempStorage != null)
             {
                 tempStorage.inTurnOrder = true;
                 turnOrder.Add(tempStorage);
@@ -188,14 +188,13 @@ public class BattleManager : MonoBehaviour
     }
     private void ResetFightersAfterRound()
     {
-        foreach(Fighter fig in fighters)
+        foreach (Fighter fig in fighters)
         {
             fig.inTurnOrder = false;
             fig.chosen = false;
         }
     }
 }
-
 
 
 [System.Serializable]
