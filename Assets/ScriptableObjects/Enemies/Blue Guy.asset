@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596c2609867e3cb449093d6622e1160b, type: 3}
   m_Name: Blue Guy
   m_EditorClassIdentifier: 
-  displayName: 
-  image: {fileID: 0}
-  stats: {fileID: 0}
-  ability1: {fileID: 0}
-  ability2: {fileID: 0}
+  displayName: Blue Guy
+  image: {fileID: 1121921231, guid: eb6ea088964994947b3d1794f8c82e72, type: 3}
+  stats: {fileID: 11400000, guid: 138bbcd01b58dbf4a85e6190e297c098, type: 2}
+  ability1: {fileID: 11400000, guid: 06aedbbe4f87d0e4b92bd0aa61640a60, type: 2}
+  ability2: {fileID: 11400000, guid: eebc16d32f772644fb1b0b77fe3f8e0b, type: 2}
   ability3: {fileID: 0}
   ability4: {fileID: 0}
-  team: 0
-  fightingStyles: 
+  team: 1
+  fightingStyles: 03000000

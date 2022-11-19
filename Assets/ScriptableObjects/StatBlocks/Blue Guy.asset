@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd775cfa2874cf4cb57326f72139fa9, type: 3}
   m_Name: Blue Guy
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 99999
   healthRegen: 0
   physicalDamage: 0
   magicalDamage: 0
