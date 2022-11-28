@@ -48,7 +48,7 @@ public class BattleManager : MonoBehaviour
             manager.PauseScene();
         }
 
-        SoundMusicManager.instance.PlayMusic(EncounterManager.instance.GetSoundTrack(), true);
+        SoundMusicManager.instance.PlayMusic(EncounterManager.instance.GetSoundTrack(), true, 1.0f);
         StartCoroutine("MainBattleLoop");
     }
 

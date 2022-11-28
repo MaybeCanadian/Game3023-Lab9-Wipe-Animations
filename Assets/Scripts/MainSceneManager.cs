@@ -26,7 +26,7 @@ public class MainSceneManager : MonoBehaviour
     }
     private void Start()
     {
-        SoundMusicManager.instance.PlayMusic(e_SoundTrack.ExploringTheDepths, true);
+        SoundMusicManager.instance.PlayMusic(e_SoundTrack.ExploringTheDepths, true, 0.25f);
     }
     public void PauseScene()
     {
@@ -42,7 +42,7 @@ public class MainSceneManager : MonoBehaviour
             gObject?.SetActive(true);  
         }
 
-        SoundMusicManager.instance.PlayMusic(e_SoundTrack.ExploringTheDepths, true);
+        SoundMusicManager.instance.PlayMusic(e_SoundTrack.ExploringTheDepths, true, 0.25f);
     }
     public void AddObject(GameObject gObject)
     {
