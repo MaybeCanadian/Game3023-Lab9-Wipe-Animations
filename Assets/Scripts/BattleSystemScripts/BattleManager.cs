@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager instance;
@@ -49,6 +48,7 @@ public class BattleManager : MonoBehaviour
             manager.PauseScene();
         }
 
+        SoundMusicManager.instance.PlayMusic(EncounterManager.instance.GetSoundTrack(), true);
         StartCoroutine("MainBattleLoop");
     }
 

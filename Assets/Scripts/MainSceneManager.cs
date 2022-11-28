@@ -24,7 +24,10 @@ public class MainSceneManager : MonoBehaviour
         sceneObjects = new List<GameObject>();
         
     }
-
+    private void Start()
+    {
+        SoundMusicManager.instance.PlayMusic(e_SoundTrack.ExploringTheDepths, true);
+    }
     public void PauseScene()
     {
         foreach(GameObject gObject in sceneObjects)
@@ -38,13 +41,13 @@ public class MainSceneManager : MonoBehaviour
         {
             gObject?.SetActive(true);  
         }
-    }
 
+        SoundMusicManager.instance.PlayMusic(e_SoundTrack.ExploringTheDepths, true);
+    }
     public void AddObject(GameObject gObject)
     {
         sceneObjects.Add(gObject);
     }
-
     public bool RemoveObject(GameObject gObject)
     {
         return sceneObjects.Remove(gObject);

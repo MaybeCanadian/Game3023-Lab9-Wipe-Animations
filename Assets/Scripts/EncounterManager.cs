@@ -5,7 +5,6 @@ using UnityEngine;
 public class EncounterManager : MonoBehaviour
 {
     public static EncounterManager instance;
-
     private void Awake()
     {
         if(instance != null && instance != this)
@@ -19,9 +18,14 @@ public class EncounterManager : MonoBehaviour
     }
 
     public PossibleEnemies possibleEncounters;
-
+    public e_SoundTrack encounterTrack;
     public Enemies GetEnemyEncounter()
     {
         return possibleEncounters.GetEncounter();
+    }
+
+    public e_SoundTrack GetSoundTrack()
+    {
+        return encounterTrack;
     }
 }

@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Main Area
   m_EditorClassIdentifier: 
   allEnemies:
-  - {fileID: 11400000, guid: 275c1425ab49e7144a8a0f5801db1a9f, type: 2}
-  - {fileID: 11400000, guid: 275c1425ab49e7144a8a0f5801db1a9f, type: 2}
-  - {fileID: 11400000, guid: 275c1425ab49e7144a8a0f5801db1a9f, type: 2}
+  - {fileID: 11400000, guid: 9a7db71ba3531d0418ca304f0c934f9c, type: 2}
   - {fileID: 11400000, guid: 275c1425ab49e7144a8a0f5801db1a9f, type: 2}
